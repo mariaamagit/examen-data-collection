@@ -56,6 +56,14 @@ elif choix == "Voitures":
 elif choix == "Motos et scooters":
     st.dataframe(motos)
 
+    st.subheader("Analyse des motos et scooters")
+
+    st.write("Nombre d'annonces par catégorie")
+
+    graphique = motos["categorie"].value_counts()
+
+    st.bar_chart(graphique)
+
 # Données brutes collectées avec Web Scraper
 st.header("Données collectées avec Web Scraper")
 
