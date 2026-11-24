@@ -34,6 +34,14 @@ choix = st.selectbox(
 if choix == "Livres":
     st.dataframe(books)
 
+    st.subheader("Analyse des livres")
+
+    st.write("Répartition des livres selon leur note")
+
+    graphique = books["rating"].value_counts().sort_index()
+
+    st.bar_chart(graphique)
+
 elif choix == "Voitures":
     st.dataframe(gaaraas)
 
