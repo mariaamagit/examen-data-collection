@@ -100,3 +100,32 @@ elif choix_raw == "Motos et scooters":
         motos_raw.to_csv(index=False),
         file_name="motos_scooters_webscraper_raw.csv"
     )
+
+# Tableau de bord des bulletins climatiques
+st.header("Bulletins climatiques")
+
+st.write("Analyse des températures par mois et par année")
+
+# Choix de l'année
+annee = st.selectbox(
+    "Choisir une année",
+    sorted(bulletins["annee"].unique())
+)
+
+# Filtrer les données
+bulletins_annee = bulletins[bulletins["annee"] == annee]
+
+# Affichage du tableau
+st.dataframe(bulletins_annee)
+
+# Graphique des températures maximales
+st.subheader("Températures maximales par mois")
+
+ordre_mois = [
+    "janvier", "fevrier", "mars", "avril", "mai", "juin", "juillet", "aout", "septembre", "octobre", "novembre", "decembre"
+]
+
+graphique = bulletins_annee.groupby("mois")["tmax_maxmax"].mean()
+graphique = graphique.reindex(ordre_mois).dropna()
+
+st.bar_chart(graphique)
