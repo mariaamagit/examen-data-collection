@@ -145,4 +145,19 @@ tables = pd.read_sql_query(
 st.write("Tables disponibles dans la base de donnees :")
 st.dataframe(tables)
 
+# Choisir une table
+choix_table = st.selectbox(
+    "Choisir une table SQLite",
+    tables["name"]
+)
+
+# Lire les donnees de la table selectionnee
+donnees_sql = pd.read_sql_query(
+    f"SELECT * FROM {choix_table}",
+    conn
+)
+
+# Afficher les donnees
+st.dataframe(donnees_sql)
+
 conn.close()
