@@ -45,6 +45,14 @@ if choix == "Livres":
 elif choix == "Voitures":
     st.dataframe(gaaraas)
 
+    st.subheader("Analyse des voitures")
+
+    st.write("Prix moyen des voitures par marque")
+
+    graphique = gaaraas.groupby("marque")["prix"].mean().sort_values(ascending=False).head(10)
+
+    st.bar_chart(graphique)
+
 elif choix == "Motos et scooters":
     st.dataframe(motos)
 
