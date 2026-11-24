@@ -39,3 +39,40 @@ elif choix == "Voitures":
 
 elif choix == "Motos et scooters":
     st.dataframe(motos)
+
+# Données brutes collectées avec Web Scraper
+st.header("Données collectées avec Web Scraper")
+
+books_raw = pd.read_csv("data/books_webscraper_raw.csv")
+gaaraas_raw = pd.read_csv("data/gaaraas_webscraper_raw.csv")
+motos_raw = pd.read_csv("data/motos_scooters_webscraper_raw.csv")
+
+choix_raw = st.selectbox(
+    "Choisir une source Web Scraper",
+    ["Livres", "Voitures", "Motos et scooters"],
+    key="raw"
+)
+
+if choix_raw == "Livres":
+    st.dataframe(books_raw)
+    st.download_button(
+        "Télécharger les données brutes",
+        books_raw.to_csv(index=False),
+        file_name="books_webscraper_raw.csv"
+    )
+
+elif choix_raw == "Voitures":
+    st.dataframe(gaaraas_raw)
+    st.download_button(
+        "Télécharger les données brutes",
+        gaaraas_raw.to_csv(index=False),
+        file_name="gaaraas_webscraper_raw.csv"
+    )
+
+elif choix_raw == "Motos et scooters":
+    st.dataframe(motos_raw)
+    st.download_button(
+        "Télécharger les données brutes",
+        motos_raw.to_csv(index=False),
+        file_name="motos_scooters_webscraper_raw.csv"
+    )
