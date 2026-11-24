@@ -143,6 +143,6 @@ tables = pd.read_sql_query(
 )
 
 st.write("Tables disponibles dans la base de donnees :")
-st.dataFrame(tables)
+st.dataframe(tables)
 
 conn.close()
