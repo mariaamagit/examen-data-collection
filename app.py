@@ -130,3 +130,19 @@ graphique = bulletins_annee.groupby("mois")["tmax_maxmax"].mean()
 graphique = graphique.reindex(ordre_mois).dropna()
 
 st.bar_chart(graphique)
+
+# Connexion a la base de donnees SQLite
+conn = sqlite3.connect("projet_scraping.db")
+
+# Affichage des tables disponibles
+st.header("Base de données SQLite")
+
+tables = pd.read_sql_query(
+    "SELECT name FROM sqlite_master WHERE type='table'",
+    conn
+)
+
+st.write("Tables disponibles dans la base de donnees :")
+st.dataFrame(tables)
+
+conn.close()
