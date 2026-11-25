@@ -176,4 +176,11 @@ st.link_button(
     "https://ee.kobotoolbox.org/x/fEoy5vWG"
 )
 
+st.subheader("Formulaire Google Forms")
+
+st.link_button(
+    "Évaluer l'application avec Google Forms",
+    "https://forms.gle/j12cXnXXxUjBPjs48"
+)
+
 conn.close()
