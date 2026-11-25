@@ -160,4 +160,20 @@ donnees_sql = pd.read_sql_query(
 # Afficher les donnees
 st.dataframe(donnees_sql)
 
+# Evaluation de l'application
+st.header("📝 Évaluation de l'application")
+
+st.write("""
+Votre avis nous intéresse !
+Participez à l'évaluation de notre application
+afin de nous aider à l'améliorer.
+""")
+
+st.subheader("Formulaire KoboToolbox")
+
+st.link_button(
+    "Évaluer l'application avec KoboToolbox",
+    "https://ee.kobotoolbox.org/x/fEoy5vWG"
+)
+
 conn.close()
